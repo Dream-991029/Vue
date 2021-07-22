@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="a">按钮1</button>
+    <button @click="b">按钮2</button>
+    <button @click="c">按钮3</button>
+    <button @click="c(11111)">按钮4</button>
+    <button @click="d">按钮5</button>
+    <button @click="d(222)">按钮6</button>
+    <button @click="d(222, $event)">按钮7</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        a () {
+          console.log(11111);
+        },
+        b () {
+          console.log(22222);
+        },
+        // 如果只有一个参数,并且上面没有传实参,那么这个形参会表示event对象
+        // 如果只有一个参数,并且上面传入了实参,那么这个形参会表示实参
+        c (name) {
+          console.log(name);
+        },
+        // 如果有两个参数,上面没有传任何实参,那么第一个形参代表event对象,第二个形参代表undefined
+        // 如果有两个参数,上面传入一个实参,那么第一个形参代表上面传入的实参,第二个形参代表undefined
+        // 如果有两个参数,上面传入了两个参数,那么第一个形参代表上面传入的实参,第二个形参代表event对象,    上面传入的第二个实参必须是$event
+        d (name, event) {
+          console.log(name, event);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+  
+
+</head>
+
+<body>
+  <div id="app">
+    <div class="panel" v-if="books.length > 0">
+      <table :cellspacing="0" :cellpadding="10">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>书名</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in books">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.price | formatPrice}}</td>
+            <td>
+              <button @click="div(index)" :disabled="getFlag(item.count)">-</button>
+              {{item.count}}
+              <button @click="sum(index)">+</button>
+            </td>
+            <td>
+              <button @click="remove(index)">移除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>
+        <span>总价:</span>
+        <span>{{totalPrice | formatPrice}}</span>
+      </h2>
+    </div>
+    <div v-else>购物车为空</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+
+</html>

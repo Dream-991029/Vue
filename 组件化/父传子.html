@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :ctitle="title" :cmsg="message"></cpn>
+  </div>
+    
+  <template id="cpn">
+    <div>
+      <h2>{{ctitle}}</h2>
+      <h2>{{cmsg}}</h2>
+    </div>
+  </template>
+
+  <script>
+    Vue.component("cpn", {
+      template: "#cpn",
+      // 数组形式
+      // props: ['cmsg', 'ctitle']
+      // 对象形式
+      props: {
+        "cmsg": {
+          // 类型
+          type: String,
+          // 默认值
+          default() {
+            return "xx"
+          },
+          // 是否必须传
+          required: true
+        },
+        "ctitle": {
+          type: String,
+          default() {
+            return "bt"
+          }
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: "你是大傻逼",
+        title: "标题栏"
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

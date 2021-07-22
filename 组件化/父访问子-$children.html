@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="btnClick">点击访问子组件</button>
+    <cpn/>
+  </div>
+
+  <template id="cpn">
+    <div>
+      我是子组件
+    </div>
+  </template>
+  
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: "你好"
+      },
+      methods: {
+        btnClick() {
+          console.log(this.$children[0].name);
+          console.log(this.$children[0].showMessage());
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: "子"
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log(this.name + "女");
+            }
+          },
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

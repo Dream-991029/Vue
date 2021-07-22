@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 直接使用Promise.resolve
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve("你好")
+    //   }, 1000)
+    // }).then(data => {
+    //   console.log(data)
+    //   return Promise.resolve(data + "111")
+    // }).then(data => {
+    //   console.log(data)
+    //   return Promise.resolve(data +  "222")
+    // }).then(data => {
+    //   console.log(data)
+    // })
+
+    // 如果是成功,则直接使用return 参数就可以 
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("你好")
+      }, 1000)
+    }).then(data => {
+      console.log(data)
+      return data + "111"
+    }).then(data => {
+      console.log(data)
+      return data +  "222"
+    }).then(data => {
+      console.log(data)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+    .big {
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div :class="[red, big]">{{message}}</div>
+    <div :class="getClass()">{{message}}</div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: "你好啊",
+        red: "red",
+        big: "big"
+      },
+      methods: {
+        getClass: function () {
+          return [this.red, this.big]
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // promise: 异步解决方案
+        // Promise类需要传递两个参数(都是方法): resolve, reject
+        // resolve: 成功返回
+        // reject: 错误返回
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve()
+                reject()
+            }, 1000)
+        }).then(() => {
+            console.log("成功")
+        }).catch(() => {
+            console.log("失败")
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn @item-click="cpnClick"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <button :key="index" v-for="(item, index) in btndict" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+  
+  <script>
+    Vue.component("cpn", {
+      template: "#cpn",
+      data() {
+        return {
+          btndict: [
+            {
+              "name": "西游记",
+              "price": 15
+            },
+            {
+              "name": "红楼梦",
+              "price": 20
+            },
+            {
+              "name": "三国演义",
+              "price": 35
+            }
+          ]
+        }
+      },
+      methods: {
+        btnClick(item) {
+          // 发送事件
+          this.$emit("item-click", item);
+        }
+      },
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        cpnClick(item) {
+          console.log(item);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

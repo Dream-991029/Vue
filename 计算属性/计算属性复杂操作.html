@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>总价格: {{sum}}元</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        "books": [{
+            "id": 0,
+            "name": "三国演义",
+            "price": 88
+          },
+          {
+            "id": 1,
+            "name": "水浒传",
+            "price": 46
+          },
+          {
+            "id": 2,
+            "name": "红楼梦",
+            "price": 95
+          },
+          {
+            "id": 3,
+            "name": "西游记",
+            "price": 11
+          },
+          {
+            "id": 4,
+            "name": "钢铁是怎样炼成的",
+            "price": 26
+          },
+        ]
+      },
+      methods: {},
+      computed: {
+        sum: function () {
+          let count = 0;
+          // for (let i in this.books) {
+          //   count += this.books[i]["price"]
+          // }
+          for (let item of this.books) {
+            count += item["price"]
+          }
+          // for (let i = 0; i < this.books.length; i++) {
+          //   count += this.books[i]["price"];
+          // }
+          return count;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

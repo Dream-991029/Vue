@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>小明</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>张三</td>
+          <td>男</td>
+        </tr>
+        <tr>
+          <td>李四</td>
+          <td>女</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>版权归@lbc所有</th>
+        </tr>
+      </tfoot>
+    </table>
+    <script type="text/javascript">
+      // Promise.all(传入一个可迭代对象)
+      Promise.all([
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("4秒");
+            resolve("4秒");
+          }, 4000);
+        }),
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("2秒");
+            resolve("2秒");
+          }, 2000);
+        }),
+      ]).then((results) => {
+        // results是一个数组(装每个Promise返回的参数)
+        console.log(results);
+      });
+    </script>
+  </body>
+</html>

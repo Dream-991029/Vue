@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+      <button>我是自己定义的插槽按钮</button>
+    </cpn>
+    <cpn>11</cpn>
+    <cpn>22</cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <slot>
+        <!-- 这里面是默认值 -->
+        <h2>我是插槽1</h2>
+        <h2>我是插槽2</h2>
+        <h2>我是插槽3</h2>
+        <h2>我是插槽4</h2>
+      </slot>
+    </div>    
+  </template>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      components: {
+        cpn: {
+          template: '#cpn'
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

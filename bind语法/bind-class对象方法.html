@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+    .big {
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div :class="{'red': isRed, 'big': isBig}">{{message}}</div>
+    <div :class="getClass()">{{message}}</div>
+    <button @click="btn_click">点击</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: "你好啊",
+        isRed: true,
+        isBig: true
+      },
+      methods: {
+        btn_click: function () {
+          this.isRed = !this.isRed
+          this.isBig = !this.isBig
+        },
+        getClass: function () {
+          return {"red": this.isRed, "big": this.isBig}
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

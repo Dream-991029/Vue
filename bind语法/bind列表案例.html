@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li :key="index" v-for="(item, index) in music" @click="setColor(index)" :class="{'red': flag(index)}">{{index}}----{{item}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        curindex: null,
+        music: ["青花瓷", "完美", "后来", "海阔天空"]
+      },
+      methods: {
+        setColor: function (index) {
+          this.curindex = index;
+        },
+        flag: function (index) {
+          return this.curindex == index
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

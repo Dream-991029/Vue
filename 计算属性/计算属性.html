@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>{{fname}} {{lname}}</h3>
+    <h3>{{getFullname()}}</h3>
+    <h3>{{fullname}}</h3>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        fname: "Tom",
+        lname: "Smith"
+      },
+      methods: {
+        getFullname: function () {
+          return this.fname + " " + this.lname;
+        }
+      },
+      computed: {
+        fullname: function () {  
+          return this.fname + " " + this.lname;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

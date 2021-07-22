@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <todo>
+      <todo-title slot="todo-title" :title="title"></todo-title>
+      <todo-item slot="todo-item" v-for="(item, index) in todo_item" :key="index" :item="item" :index="index"
+        @remove="remove_item(index)"></todo-item>
+    </todo>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script>
+    Vue.component("todo", {
+      template: `
+                <div>
+                    <slot name="todo-title"></slot>
+                    <ul>
+                        <slot name="todo-item"></slot>
+                    </ul>
+                </div>
+            `
+    })
+    Vue.component("todo-title", {
+      props: ['title'],
+      template: `
+                <div>
+                    {{title}}
+                </div>
+            `
+    })
+    Vue.component("todo-item", {
+      props: ['item', 'index'],
+      template: `
+                <li>
+                    {{item}}
+                    <button @click="remove">删除</button>
+                </li>
+            `,
+      methods: {
+        remove: function () {
+          this.$emit("remove", this.index)
+        }
+      }
+    })
+    var vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          title: "手机",
+          todo_item: ["小米", "一加", "华为"]
+        }
+      },
+      methods: {
+        remove_item: function (index) {
+          this.todo_item.splice(index, 1)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

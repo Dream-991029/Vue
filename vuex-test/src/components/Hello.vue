@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <h2>{{$store.state.counter}}</h2>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Hello'
+}
+</script>
+
+<style scoped>
+
+</style>
