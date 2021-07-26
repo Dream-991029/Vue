@@ -60,6 +60,14 @@ const store = new Vuex.Store({
     },
     divFunc (state) {
       state.counter--
+    },
+    // 如果需要传递参数,那么可以在方法中跟一个形参
+    addCount (state, count) {
+      state.counter += count
+    },
+    // 使用Vuex风格传递参数, 这里传递进来的是一个对象
+    addCount1 (state, payload) {
+      state.counter += payload.count
     }
   }
 })
