@@ -8,7 +8,49 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   // 单一状态树
   state: {
-    'counter': 1000
+    counter: 1000,
+    students: [
+      {
+        'id': 1,
+        'name': 'james',
+        'sex': 'male',
+        'age': 18
+      },
+      {
+        'id': 2,
+        'name': 'kebe',
+        'sex': 'male',
+        'age': 30
+      },
+      {
+        'id': 3,
+        'name': 'curopy',
+        'sex': 'male',
+        'age': 22
+      },
+      {
+        'id': 4,
+        'name': 'mlgs',
+        'sex': 'female',
+        'age': 12
+      }
+    ]
+  },
+  getters: {
+    // 如果需要对数据进行处理,则只需要在getters中进行处理即可
+    more20Stu (state) {
+      return state.students.filter(s => s.age > 20)
+    },
+    // 如果想用想用之前处理好的数据则可以通过getters属性获取
+    more20StuLength (state, getters) {
+      return getters.more20Stu.length
+    },
+    // 如果想要外面传递过来参数,则可以返回一个方法
+    moreAgeStu (state) {
+      return age => {
+        return state.students.filter(s => s.age > age)
+      }
+    }
   },
   // 同步处理
   mutations: {

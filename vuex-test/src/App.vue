@@ -4,6 +4,9 @@
     <button @click="addClick">+</button>
     <button @click="divClick">-</button>
     <Hello></Hello>
+    <h2>{{$store.getters.more20Stu}}</h2>
+    <h2>{{$store.getters.more20StuLength}}</h2>
+    <h2>{{$store.getters.moreAgeStu(6)}}</h2>
   </div>
 </template>
 
