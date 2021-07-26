@@ -4,7 +4,7 @@
     <h2>{{$store.getters.more20Stu}}</h2>
     <h2>{{$store.getters.more20StuLength}}</h2>
     <h2>{{$store.getters.moreAgeStu(15)}}</h2>
-    <h2></h2>
+    <h2>{{$store.state.info}}</h2>
   </div>
 </template>
 

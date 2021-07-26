@@ -9,6 +9,8 @@
     <h2>{{$store.getters.more20Stu}}</h2>
     <h2>{{$store.getters.more20StuLength}}</h2>
     <h2>{{$store.getters.moreAgeStu(6)}}</h2>
+    <h2>{{$store.state.info}}</h2>
+    <button @click="updateInfo">修改</button>
   </div>
 </template>
 
@@ -33,6 +35,9 @@ export default {
         type: 'addCount1',
         count
       })
+    },
+    updateInfo () {
+      this.$store.commit('updateInfo')
     }
   }
 }
