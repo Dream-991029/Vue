@@ -11,6 +11,7 @@
     <h2>{{$store.getters.moreAgeStu(6)}}</h2>
     <h2>{{$store.state.info}}</h2>
     <button @click="updateInfo">修改</button>
+    <button @click="aupdateInfo">延时修改</button>
   </div>
 </template>
 
@@ -38,6 +39,17 @@ export default {
     },
     updateInfo () {
       this.$store.commit('updateInfo')
+    },
+    aupdateInfo () {
+      // 如果有异步操作,则需要使用dispatch
+      this.$store.dispatch('aupdateInfo', {
+        message: '我是消息',
+        success: (message) => {
+          console.log(message)
+        }
+      }).then((res) => {
+        console.log(res)
+      })
     }
   }
 }

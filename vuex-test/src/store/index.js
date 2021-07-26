@@ -77,13 +77,24 @@ const store = new Vuex.Store({
     // 更新info里面的数据
     updateInfo (state) {
       // 只要这个属性值之前在state中声明过, 那么自动加入到响应式中
-      // state.info.age = 50
+      state.info.name = 'James'
       // 在对象中添加一个属性, 这种方式不会添加到响应式中
       // state.info.address = '洛杉矶'
       // 若要在这个对象中添加一个属性, 则需要使用Vue.set
       // Vue.set(state.info, 'address', '洛杉矶')
       // 若要删除对象中的属性, 则需要使用Vue.delete
-      Vue.delete(state.info, 'age')
+      // Vue.delete(state.info, 'age')
+    }
+  },
+  // 若有异步操作,必须在actions中进行提交
+  actions: {
+    aupdateInfo (contxt, payload) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          contxt.commit('updateInfo')
+          resolve(payload.message)
+        }, 2000)
+      })
     }
   }
 })
