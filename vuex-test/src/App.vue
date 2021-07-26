@@ -12,6 +12,12 @@
     <h2>{{$store.state.info}}</h2>
     <button @click="updateInfo">修改</button>
     <button @click="aupdateInfo">延时修改</button>
+    <h2>------------a模块内容------------</h2>
+    <h2>{{$store.state.a.name}}</h2>
+    <h2>{{$store.getters.updateNameGetter1}}</h2>
+    <h2>{{$store.getters.updateNameGetter2}}</h2>
+    <h2>{{$store.getters.updateNameGetter3}}</h2>
+    <button @click="updateName">修改</button>
   </div>
 </template>
 
@@ -48,6 +54,11 @@ export default {
           console.log(message)
         }
       }).then((res) => {
+        console.log(res)
+      })
+    },
+    updateName () {
+      this.$store.dispatch('aUpdateName', '李四').then((res) => {
         console.log(res)
       })
     }
