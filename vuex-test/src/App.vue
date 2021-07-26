@@ -23,28 +23,35 @@
 
 <script>
 import Hello from './components/Hello.vue'
+import {
+  ADDFUNC,
+  DIVFUNC,
+  ADDCOUNT,
+  ADDCOUNT1,
+  UPDATEINFO
+} from './store/mutations-types'
 export default {
   name: 'App',
   components: { Hello },
   methods: {
     addClick () {
       // $store.commit: 将行为进行分发
-      this.$store.commit('addFunc')
+      this.$store.commit(ADDFUNC)
     },
     divClick () {
-      this.$store.commit('divFunc')
+      this.$store.commit(DIVFUNC)
     },
     addCount (count) {
-      this.$store.commit('addCount', count)
+      this.$store.commit(ADDCOUNT, count)
     },
     addCount1 (count) {
       this.$store.commit({
-        type: 'addCount1',
+        type: ADDCOUNT1,
         count
       })
     },
     updateInfo () {
-      this.$store.commit('updateInfo')
+      this.$store.commit(UPDATEINFO)
     },
     aupdateInfo () {
       // 如果有异步操作,则需要使用dispatch

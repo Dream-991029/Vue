@@ -1,0 +1,5 @@
+export const ADDFUNC = 'addFunc'
+export const DIVFUNC = 'divFunc'
+export const ADDCOUNT = 'addCount'
+export const ADDCOUNT1 = 'addCount1'
+export const UPDATEINFO = 'updateInfo'
