@@ -25,3 +25,16 @@ axios({
 }).catch(err => {
   console.log(err)
 })
+// 网络并发
+axios.all([
+  axios({
+    url: 'https://httpbin.org/get'
+  }),
+  axios({
+    url: 'https://httpbin.org/get'
+    // method: 'post'
+  })
+]).then(axios.spread((res1, res2) => {
+  console.log(res1)
+  console.log(res2)
+}))
