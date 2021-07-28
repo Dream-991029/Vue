@@ -67,5 +67,22 @@ export function request3 (config) {
     // 超时时间
     timeout: 5000
   })
+  // axios拦截器
+  // 请求拦截器
+  instance.interceptors.request.use(res => {
+    console.log(111)
+    // return res
+  }, err => {
+    console.log(err)
+    // return err
+  })
+  // 响应拦截器
+  instance.interceptors.response.use(res => {
+    console.log(res)
+  }, err => {
+    console.log(err)
+    // 如果不return, 那么请求会拿不到结果
+    return err
+  })
   return instance(config)
 }
